@@ -51,9 +51,10 @@ export type NativeStackNavigationConfig = {};
 
 export type NativeStackNavigationOptions = {
   /**
-   * String that can be displayed in the header as a fallback for `headerTitle`.
+   * String or a function that returns a React Element to be used by the header.
+   * Fallback for `headerTitle`.
    */
-  title?: string;
+  title?: string | (() => React.ReactNode);
   /**
    * String or a function that returns a React Element to be used by the header.
    * Defaults to scene `title`.

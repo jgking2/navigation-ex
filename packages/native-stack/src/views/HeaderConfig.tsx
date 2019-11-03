@@ -36,19 +36,14 @@ export default function HeaderConfig(props: Props) {
     gestureEnabled,
   } = props;
 
+  const titleProp = headerTitle || title;
   return (
     <ScreenStackHeaderConfig
       hidden={headerShown === false}
       translucent={headerTranslucent === true}
       hideShadow={headerHideShadow}
       hideBackButton={headerHideBackButton}
-      title={
-        typeof headerTitle === 'string'
-          ? headerTitle
-          : title !== undefined
-          ? title
-          : route.name
-      }
+      title={typeof titleProp === 'string' ? titleProp : route.name}
       titleFontFamily={headerTitleStyle.fontFamily}
       titleFontSize={headerTitleStyle.fontSize}
       titleColor={
@@ -66,11 +61,11 @@ export default function HeaderConfig(props: Props) {
       largeTitleFontSize={headerLargeTitleStyle.fontSize}
       backgroundColor={headerStyle.backgroundColor}
     >
+      {typeof titleProp === 'function' ? (
+        <ScreenStackHeaderTitleView>{titleProp()}</ScreenStackHeaderTitleView>
+      ) : null}
       {headerRight !== undefined ? (
         <ScreenStackHeaderRightView>{headerRight()}</ScreenStackHeaderRightView>
-      ) : null}
-      {typeof headerTitle === 'function' ? (
-        <ScreenStackHeaderTitleView>{headerTitle()}</ScreenStackHeaderTitleView>
       ) : null}
     </ScreenStackHeaderConfig>
   );
