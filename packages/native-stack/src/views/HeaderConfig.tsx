@@ -4,6 +4,8 @@ import {
   ScreenStackHeaderConfig,
   // @ts-ignore
   ScreenStackHeaderRightView,
+  // @ts-ignore
+  ScreenStackHeaderTitleView,
   // eslint-disable-next-line import/no-unresolved
 } from 'react-native-screens';
 import { Route } from '@react-navigation/core';
@@ -41,7 +43,7 @@ export default function HeaderConfig(props: Props) {
       hideShadow={headerHideShadow}
       hideBackButton={headerHideBackButton}
       title={
-        headerTitle !== undefined
+        typeof headerTitle === 'string'
           ? headerTitle
           : title !== undefined
           ? title
@@ -66,6 +68,9 @@ export default function HeaderConfig(props: Props) {
     >
       {headerRight !== undefined ? (
         <ScreenStackHeaderRightView>{headerRight()}</ScreenStackHeaderRightView>
+      ) : null}
+      {typeof headerTitle === 'function' ? (
+        <ScreenStackHeaderTitleView>{headerTitle()}</ScreenStackHeaderTitleView>
       ) : null}
     </ScreenStackHeaderConfig>
   );
