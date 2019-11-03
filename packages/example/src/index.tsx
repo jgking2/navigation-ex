@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ScrollView, AsyncStorage, YellowBox } from 'react-native';
+import { ScrollView, AsyncStorage, YellowBox, Text } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Appbar, List } from 'react-native-paper';
 import { Asset } from 'expo-asset';
@@ -162,6 +162,7 @@ export default function App() {
                 name="Home"
                 options={{
                   title: 'Examples',
+                  headerTitle: () => <Text>Examples</Text>,
                   headerLeft: () => (
                     <Appbar.Action
                       icon="menu"

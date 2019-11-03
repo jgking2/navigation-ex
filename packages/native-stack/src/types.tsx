@@ -55,7 +55,8 @@ export type NativeStackNavigationOptions = {
    */
   title?: string;
   /**
-   * String to display in the header as title. Defaults to scene `title`.
+   * String or a function that returns a React Element to be used by the header.
+   * Defaults to scene `title`.
    */
   headerTitle?: string | (() => React.ReactNode);
   /**
